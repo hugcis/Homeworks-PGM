@@ -1,0 +1,8 @@
+
+    \begin{tabular}{c|cccc}
+    Method & LDA & Logistic & Linear & QDA \\
+    \hline
+    Train Error & 0.0301 & 0.0201 & 0.0301 & 0.0234 \\
+    \hline
+    Test Error & 0.0415 & 0.0435 & 0.0415 & 0.0235 \\
+    \end{tabular}
