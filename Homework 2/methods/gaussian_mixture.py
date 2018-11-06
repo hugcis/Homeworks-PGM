@@ -76,8 +76,8 @@ class GaussianMixture:
                 elif self.covariance_type == 'id':
                     sumd = 0
                     for j in range(X.shape[0]):
-                        sumd += resp[i, j] * np.dot((X[j, :] - self.mu[i, :]), (X[j, :] - self.mu[i, :]).T)
-                    self.sigma[i, :, :] = (sumd / sum_resp[i])*np.identity(2)/2
+                        sumd += resp[i, j] * np.linalg.norm(X[j, :] - self.mu[i, :])**2
+                    self.sigma[i, :, :] = (sumd / sum_resp[i])*np.identity(2)/X.shape[1]
             
             # Estimate class repartition
             self.pi = sum_resp/X.shape[0]
@@ -87,6 +87,9 @@ class GaussianMixture:
         return likelihoods
 
     def _compute_resp(self, X):
+        """ Function that computes the responsibilities for current
+        parameters mu, sigma and pi.
+        """
         resp = np.zeros((self.n_gaussians, X.shape[0]))
         for gaussian in range(self.n_gaussians):
             resp[gaussian, :] = (self.pi[gaussian] * 

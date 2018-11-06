@@ -21,7 +21,7 @@ class KMeans:
             for cluster_n in range(self.k):
                 self.k_centers[:, cluster_n] = np.mean(X[cluster_assignement==cluster_n, :], axis=0)
             
-            distortion_new = np.sum(np.min(dists, axis=1)**2)
+            distortion_new = np.sum(np.min(dists, axis=1))
             niter += 1
         
         # Store the last distortion
