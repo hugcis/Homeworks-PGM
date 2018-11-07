@@ -64,11 +64,14 @@ Indeed, knowing that $X+Y \geq 3$ makes the two random variables not independent
  \begin{align*}
  p(x) = p(x_i|x_{\pi_i})\cdot p(x_j|x_{\pi_i}, x_i) \cdot\prod_{s\in V-\{ i, j \}} p(x_s|x_{\pi_s})
  \end{align*}
+ 
  And 
+ 
  \begin{align*}
- p(x_i|x_{\pi_i})\cdot p(x_j|x_{\pi_i}, x_i) &= \frac{p(x_i, x_{\pi_i})}{p(x_{\pi_i})} \frac{p(x_i, x_{\pi_i}, x_j)}{p(x_{\pi_i}, x_i)} =p(x_i,  x_j |x_{\pi_i})\cdot \frac{p(x_j, x_{\pi_i})}{p(x_j, x_{\pi_i})}\\
+ p(x_i|x_{\pi_i})\cdot p(x_j|x_{\pi_i}, x_i) &= \frac{p(x_i, x_{\pi_i})}{p(x_{\pi_i})} \frac{p(x_i, x_{\pi_i}, x_j)}{p(x_{\pi_i}, x_i)} =p(x_i,  x_j |x_{\pi_i})\cdot \frac{p(x_j, x_{\pi_i})}{p(x_j, x_{\pi_i})}\\[+5pt]
  & = p(x_i | x_{\pi_i}, x_j)\cdot p(x_j|x_{\pi_i})
  \end{align*}
+ \\
  In $G'$, $\{i\rightarrow j\}$ has been replaced by $\{j\rightarrow i\}$, thus $\pi_i' = \pi_i \cup \{j\}$ and $\pi_j' = \pi_i $, the equation above shows that $p$ can be factorized in this new graph, hence $p\in \mathcal{L}(G')$. From the same equality above, if $p\in \mathcal{L}(G')$, also $p\in \mathcal{L}(G)$. Therefore $\boxed{ \mathcal{L}(G) =  \mathcal{L}(G')}$.
  \vfill
  
@@ -78,7 +81,8 @@ Indeed, knowing that $X+Y \geq 3$ makes the two random variables not independent
  Hence if $p\in \mathcal{L}(G)$, $p(x) = \prod_i p(x_i | x_{\pi_i}) = \prod_i \Psi_i(x_i, x_{\pi_i})$, where $\Psi_i: (x_i, x_{\pi_i})\rightarrow p(x_i|x_{\pi_i})$ is a function of an element and its parent (a 2-clique of the graph), or of the root of the tree only (a 1-clique). We have $\boxed{\mathcal{L}(G) \subset \mathcal{L}(G')}$.
  \\
  
- For $p\in \mathcal{L}(G')$, we have for all $x$, $p(x) = \frac{1}{Z} \prod_{c\in\mathcal{C}} \psi_c(x_c)$ where $\mathcal{C}$ is the set of maximal cliques of $G'$ and $Z = \sum_x  \prod_{c\in\mathcal{C}} \psi_c(x_c)$. From the argument above, we know that all maximal cliques of $G'$ have size 2 except for the root of the tree. Therefore, $p(x) = \prod_i f(x_i, x_{\pi_i})$. 
+ For $p\in \mathcal{L}(G')$, we have for all $x$, $p(x) = \frac{1}{Z} \prod_{c\in\mathcal{C}} \psi_c(x_c)$ where $\mathcal{C}$ is the set of maximal cliques of $G'$ and $Z = \sum_x  \prod_{c\in\mathcal{C}} \psi_c(x_c)$. From the argument above, we know that all maximal cliques of $G'$ have size 2 except for the root of the corresponding directed tree. Therefore, $p(x) = \prod_i f(x_i, x_{\pi_i})$. Since the $f_i$ are defined up to a multiplicative constant, we can make them equal to a conditional probability by properly normalizing. Hence  $\boxed{\mathcal{L}(G') \subset \mathcal{L}(G)}$.
+
  \vfill
  
  \clearpage
